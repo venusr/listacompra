@@ -18,7 +18,7 @@ public class LoginComponent {
 	public Login salvar(Login login) {
         List<Login> logins = loginRepository.findByUsuario(login.getUsuario());
         if (logins.size() > 0) {
-            login.setUsuario(logins.get(0).getUsuario());
+            return null;
         }
         return loginRepository.save(login);
     }
