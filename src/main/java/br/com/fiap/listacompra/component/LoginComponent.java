@@ -41,7 +41,7 @@ public class LoginComponent {
     public Login buscarUsuario(String usuario) {
         List<Login> logins = loginRepository.findByUsuario(usuario);
         if (logins.isEmpty()) {
-            return new Login();
+            return null;
         } else {
             return logins.get(0);
         }
