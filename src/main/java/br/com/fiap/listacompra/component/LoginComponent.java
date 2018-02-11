@@ -62,15 +62,15 @@ public class LoginComponent {
     }
     
     
-    public Boolean validarSenha(String usuario, String senha) {
+    public Login validarSenha(String usuario, String senha) {
     	List<Login> logins = loginRepository.findByUsuario(usuario);
     	if (logins.isEmpty()) {
-    		return false; //Codigo de Erro para quando o Usuario não existe  
+    		return null; //Codigo de Erro para quando o Usuario não existe  
     	} else {
     		if (logins.get(0).getSenha().equals(senha)) {
-    			return true; //Senha validada com sucesso
+    			return logins.get(0); //Senha validada com sucesso
     		} ;
-    		return false; //Codigo de Erro para quando a Senha está incorreta;
+    		return null; //Codigo de Erro para quando a Senha está incorreta;
     	}	
 
     }
