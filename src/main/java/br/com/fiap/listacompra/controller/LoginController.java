@@ -38,7 +38,7 @@ public class LoginController {
 	   }
 	   
     @GetMapping(value = "/validarsenha/{usuario}/{senha}")
-    private int validarSenha(@PathVariable(value = "senha") String senha, @PathVariable(value = "usuario") String usuario) {
+    private Boolean validarSenha(@PathVariable(value = "senha") String senha, @PathVariable(value = "usuario") String usuario) {
  	   return loginComponent.validarSenha(usuario,senha);
     }
 
