@@ -74,7 +74,7 @@ public class LoginComponent {
 
     }
     
-    public boolean validarSenha(String usuario, String senha) {
+    public Boolean validarSenha(String usuario, String senha) {
     	List<Login> logins = loginRepository.findByUsuario(usuario);
     	if (logins.isEmpty()) {
     		return false; //Codigo de Erro para quando o Usuario não existe  
