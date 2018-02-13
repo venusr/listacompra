@@ -53,9 +53,12 @@ public class ProdutoController {
        produtoComponent.deleteAll();
    }
 
-   @DeleteMapping(value = "/nome/{nome}")
-   private void delete(@PathVariable(value = "nome") String nome) {
-       produtoComponent.delete(nome);
+   @DeleteMapping(value = "/nome/{nome}/{idLogin}")
+   private void delete(@PathVariable(value = "nome") String nome, @PathVariable(value = "idLogin" ) String id) {
+   	    Login login = loginComponent.buscarId(id);
+  		System.out.println(login);
+
+       produtoComponent.delete(nome, login);
    }
   
    @GetMapping(value = "/produtos/{idLogin}")

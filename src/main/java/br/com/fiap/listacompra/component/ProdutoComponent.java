@@ -53,8 +53,27 @@ public class ProdutoComponent {
         produtoRepository.deleteAll();
     }
     
-    public void delete(String nome) {
+    public void delete(String nome, Login login) {
     	
+        List<Produto> produtosLogin = produtoRepository.findByLogin(login);
+        
+        if (produtosLogin.size() > 0) {
+           for (int i=0; i < produtosLogin.size();i++) {
+        	  System.out.println("produtoLogin " + produtosLogin.get(i).getNome());
+        	          	  
+              if (produtosLogin.get(i).getNome().equals(nome)){
+            	  System.out.println("Produtos sao iguais");
+            	  produtoRepository.delete(produtosLogin.get(i));
+
+              }
+        	
+           }
+ 			
+ 		}
+ 	   
+
+        
+        
 //    	List<Produto> produtos = produtoRepository.findByNome(nome);
  //   	if(!produtos.isEmpty())
  //   		produtoRepository.delete(produtos.get(0));
