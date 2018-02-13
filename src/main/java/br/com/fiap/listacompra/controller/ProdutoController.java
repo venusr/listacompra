@@ -61,13 +61,6 @@ public class ProdutoController {
        produtoComponent.delete(nome, login);
    }
    
-   @PostMapping(value = "/produto/nome/{nomeantigo}/{produto}/{idLogin}")
-   private Produto update(@PathVariable(value = "nomeantigo") String nomeAntigo, @PathVariable(value = "nome") Produto produto, @PathVariable(value = "idLogin" ) String id) {
-	   Login login = loginComponent.buscarId(id);
-	   
-	   return produtoComponent.update(nomeAntigo, produto, login);
-   }
-   
   
    @GetMapping(value = "/produtos/{idLogin}")
    private List<Produto> findByLogin(@PathVariable(value = "idLogin") String idLogin) {
@@ -83,6 +76,20 @@ public class ProdutoController {
        return produtoComponent.findByLogin(login);
    }
    
+   @GetMapping(value = "/nome/{nome}/{idLogin}")
+   private Produto busca(@PathVariable(value = "nome") String nome, @PathVariable(value = "idLogin" ) String id) {
+   	    Login login = loginComponent.buscarId(id);
+  		System.out.println(login);
+
+        return produtoComponent.busca(nome, login);
+   }
+  
+   @PostMapping(value = "/produto/nome/{nomeantigo}/{produto}/{idLogin}")
+   private Produto update(@PathVariable(value = "nomeantigo") String nomeAntigo, @PathVariable(value = "nome") Produto produto, @PathVariable(value = "idLogin" ) String id) {
+	   Login login = loginComponent.buscarId(id);
+	   
+	   return produtoComponent.update(nomeAntigo, produto, login);
+   }
    
    
 }

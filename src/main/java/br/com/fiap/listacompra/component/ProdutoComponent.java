@@ -71,6 +71,25 @@ public class ProdutoComponent {
  		}
     }
 
+    public Produto busca(String nome, Login login) {
+    	
+        List<Produto> produtosLogin = produtoRepository.findByLogin(login);
+        
+        if (produtosLogin.size() > 0) {
+           for (int i=0; i < produtosLogin.size();i++) {
+        	  System.out.println("produtoLogin " + produtosLogin.get(i).getNome());
+        	          	  
+              if (produtosLogin.get(i).getNome().equals(nome)){
+            	  System.out.println("Produtos sao iguais");
+            	  return produtosLogin.get(i);
+              }
+        	
+           }
+ 		}
+        return null;
+    }
+
+    
     public Produto update(String nomeAntigo, Produto produto, Login login) {
 
         List<Produto> produtosLogin = produtoRepository.findByLogin(login);
