@@ -60,6 +60,14 @@ public class ProdutoController {
 
        produtoComponent.delete(nome, login);
    }
+   
+   @PostMapping(value = "/produto/nome/{nomeantigo}/{produto}/{idLogin}")
+   private Produto update(@PathVariable(value = "nomeantigo") String nomeAntigo, @PathVariable(value = "nome") Produto produto, @PathVariable(value = "idLogin" ) String id) {
+	   Login login = loginComponent.buscarId(id);
+	   
+	   return produtoComponent.update(nomeAntigo, produto, login);
+   }
+   
   
    @GetMapping(value = "/produtos/{idLogin}")
    private List<Produto> findByLogin(@PathVariable(value = "idLogin") String idLogin) {

@@ -68,31 +68,36 @@ public class ProdutoComponent {
               }
         	
            }
- 			
  		}
- 	   
-
-        
-        
-//    	List<Produto> produtos = produtoRepository.findByNome(nome);
- //   	if(!produtos.isEmpty())
- //   		produtoRepository.delete(produtos.get(0));
     }
 
-    public void update(String nome, Produto produto) {
-   // 	List<Produto> produtos = produtoRepository.findByNome(nome);
-   // 	if(!produtos.isEmpty())
-   // 		produtoRepository.save(produtos.get(0));
-    }
+    public Produto update(String nomeAntigo, Produto produto, Login login) {
 
-    
-   // public Produto buscarProduto(String nome) {
-    //    List<Produto> produtos = produtoRepository.findByNome(nome);
-    //    if (produtos.isEmpty()) {
-    //        return new Produto();
-    //    } else {
-    //        return produtos.get(0);
-     //   }
-    //}
+        List<Produto> produtosLogin = produtoRepository.findByLogin(login);
+        
+        if (produtosLogin.size() > 0) {
+        	//verifica se já existe outro produto com o mesmo nome
+            for (int i=0; i < produtosLogin.size();i++) {
+         	          	  
+               if (produtosLogin.get(i).getNome().equals(produto.getNome())){
+             	  System.out.println("Produto já existe com esse novo nome");
+                  return null;
+               }
+            }
+            //atualiza produto
+            for (int i=0; i < produtosLogin.size();i++) {
+               if (produtosLogin.get(i).getNome().equals(nomeAntigo)){
+            	  System.out.println("Produtos sao iguais");
+                  List<Produto> produtos = produtoRepository.findById(produtosLogin.get(i).getId());
+            	  produto.setId(produtosLogin.get(i).getId());
+
+            	  return produtoRepository.save(produto);
+
+               }
+            }
+
+  		}
+        return null;
+    }
 	
 }
