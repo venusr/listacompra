@@ -91,16 +91,18 @@ public class ProdutoComponent {
 
     
     public Produto update(String nomeAntigo, Produto produto, Login login) {
-
-        List<Produto> produtosLogin = produtoRepository.findByLogin(login);
-
-    	  Produto produtoTeste = new Produto();
-        
-        
+    	List<Produto> produtosLogin = produtoRepository.findByLogin(login);
+       
+        System.out.println( " entrou no update do produto");
         if (produtosLogin.size() > 0) {
         	//verifica se já existe outro produto com o mesmo nome
+        	System.out.println( " entrou no if de produtos1");
+        	
         	if (!nomeAntigo.equals(produto.getNome())) {
-                for (int i=0; i < produtosLogin.size();i++) {
+            	System.out.println( " entrou no if de nomeantigo");
+
+        		for (int i=0; i < produtosLogin.size();i++) {
+                	System.out.println( " entrou no loop de produtos1");
          	          	  
                    if (produtosLogin.get(i).getNome().equals(produto.getNome())){
                  	  System.out.println("Produto já existe com esse novo nome");
@@ -110,21 +112,20 @@ public class ProdutoComponent {
         	}
             //atualiza produto
             for (int i=0; i < produtosLogin.size();i++) {
-               if (produtosLogin.get(i).getNome().equals(nomeAntigo)){
+            	System.out.println( " entrou no loop de produtos2");
+
+            	if (produtosLogin.get(i).getNome().equals(nomeAntigo)){
             	  System.out.println("Produtos sao iguais");
-                  List<Produto> produtos = produtoRepository.findById(produtosLogin.get(i).getId());
             	  produto.setId(produtosLogin.get(i).getId());
+
+            	  System.out.println( " vai para o repositorio pra salvar " + produto.getId());
             	  
-            	  produtoTeste.setNome("entrou aqui" );
-            	  return produtoTeste;
-   //         	  return produtoRepository.save(produto);
+            	  return produtoRepository.save(produto);
                }
             }
   		}
         
-        produtoTeste.setNome("entrou null");
-        return produtoTeste;
-        //return null;
+        return null; 
     }
 	
 }

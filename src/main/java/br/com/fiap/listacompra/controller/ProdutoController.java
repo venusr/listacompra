@@ -88,6 +88,7 @@ public class ProdutoController {
    private Produto update(@PathVariable(value = "nomeantigo") String nomeAntigo, @PathVariable(value = "nome") Produto produto, @PathVariable(value = "idLogin" ) String id) {
 	   Login login = loginComponent.buscarId(id);
 	   
+	   	   
 	   return produtoComponent.update(nomeAntigo, produto, login);
    }
    
