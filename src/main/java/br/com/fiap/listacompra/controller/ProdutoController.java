@@ -84,8 +84,20 @@ public class ProdutoController {
         return produtoComponent.busca(nome, login);
    }
   
-   @GetMapping(value = "/produto/nome/{nomeantigo}/{produto}/{idLogin}")
-   private Produto altera(@PathVariable(value = "nomeantigo") String nomeAntigo, @PathVariable(value = "produto") Produto produto, @PathVariable(value = "idLogin" ) String id) {
+   @PostMapping(value = "/produto/altera")
+   private Produto altera(@RequestBody Produto produto){
+		System.out.println(" entrou no altera");   	   
+
+	   
+	//   Login login = loginComponent.buscarId(id);
+		System.out.println(" entrou no update");   	   
+	  return null;
+		
+	  // return produtoComponent.update(nomeAntigo, produto, login);
+   }
+
+   
+   /*private Produto altera(@PathVariable(value = "nomeantigo") String nomeAntigo, @PathVariable(value = "produto") Produto produto, @PathVariable(value = "idLogin" ) String id) {
 		System.out.println(" entrou no altera");   	   
 
 	   
@@ -94,6 +106,6 @@ public class ProdutoController {
 	   
 	   return produtoComponent.update(nomeAntigo, produto, login);
    }
-   
+   */
    
 }
