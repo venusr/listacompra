@@ -90,43 +90,25 @@ public class ProdutoComponent {
     }
 
     
-    public Produto update(String nomeAntigo, Produto produto) {
-        System.out.println( " entrou no update do produto");
-    	
-    	List<Produto> produtosLogin = produtoRepository.findByLogin(produto.getLogin());
-       
+    public Produto update(Produto produto) {
+        List<Produto> produtosLogin = produtoRepository.findByLogin(produto.getLogin());
+        
         if (produtosLogin.size() > 0) {
-        	//verifica se já existe outro produto com o mesmo nome
-        	System.out.println( " entrou no if de produtos1");
-        	
-        	if (!nomeAntigo.equals(produto.getNome())) {
-            	System.out.println( " entrou no if de nomeantigo");
-
-        		for (int i=0; i < produtosLogin.size();i++) {
-                	System.out.println( " entrou no loop de produtos1");
-         	          	  
-                   if (produtosLogin.get(i).getNome().equals(produto.getNome())){
-                 	  System.out.println("Produto já existe com esse novo nome");
-                      return null;
-                   }
-                }
-        	}
-            //atualiza produto
-            for (int i=0; i < produtosLogin.size();i++) {
-            	System.out.println( " entrou no loop de produtos2");
-
-            	if (produtosLogin.get(i).getNome().equals(nomeAntigo)){
+           for (int i=0; i < produtosLogin.size();i++) {
+        	  System.out.println("produtoLogin " + produtosLogin.get(i).getNome());
+        	  System.out.println("produto" + produto.getNome());
+        	          	  
+              if (produtosLogin.get(i).getNome().equals(produto.getNome())){
             	  System.out.println("Produtos sao iguais");
+                  List<Produto> produtos = produtoRepository.findById(produtosLogin.get(i).getId());
             	  produto.setId(produtosLogin.get(i).getId());
 
-            	  System.out.println( " vai para o repositorio pra salvar " + produto.getId());
-            	  
-            	  return produtoRepository.save(produto);
-               }
-            }
-  		}
+              }
+        	
+           }
+        }
+        return produtoRepository.save(produto);
         
-        return null; 
     }
 	
 }
