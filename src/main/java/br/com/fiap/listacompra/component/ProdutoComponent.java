@@ -93,6 +93,9 @@ public class ProdutoComponent {
     public Produto update(String nomeAntigo, Produto produto, Login login) {
 
         List<Produto> produtosLogin = produtoRepository.findByLogin(login);
+
+    	  Produto produtoTeste = new Produto();
+        
         
         if (produtosLogin.size() > 0) {
         	//verifica se já existe outro produto com o mesmo nome
@@ -111,11 +114,17 @@ public class ProdutoComponent {
             	  System.out.println("Produtos sao iguais");
                   List<Produto> produtos = produtoRepository.findById(produtosLogin.get(i).getId());
             	  produto.setId(produtosLogin.get(i).getId());
-            	  return produtoRepository.save(produto);
+            	  
+            	  produtoTeste.setNome("entrou aqui" );
+            	  return produtoTeste;
+   //         	  return produtoRepository.save(produto);
                }
             }
   		}
-        return null;
+        
+        produtoTeste.setNome("entrou null");
+        return produtoTeste;
+        //return null;
     }
 	
 }
