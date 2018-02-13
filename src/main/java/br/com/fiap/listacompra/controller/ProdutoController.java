@@ -85,10 +85,13 @@ public class ProdutoController {
    }
   
    @PostMapping(value = "/produto/nome/{nomeantigo}/{produto}/{idLogin}")
-   private Produto altera(@PathVariable(value = "nomeantigo") String nomeAntigo, @PathVariable(value = "nome") Produto produto, @PathVariable(value = "idLogin" ) String id) {
-	   Login login = loginComponent.buscarId(id);
+   private Produto altera(@PathVariable(value = "nomeantigo") String nomeAntigo, @PathVariable(value = "produto") Produto produto, @PathVariable(value = "idLogin" ) String id) {
+		System.out.println(" entrou no altera");   	   
+
 	   
-	System.out.println(" entrou no update");   	   
+	   Login login = loginComponent.buscarId(id);
+		System.out.println(" entrou no update");   	   
+	   
 	   return produtoComponent.update(nomeAntigo, produto, login);
    }
    

@@ -91,9 +91,10 @@ public class ProdutoComponent {
 
     
     public Produto update(String nomeAntigo, Produto produto, Login login) {
+        System.out.println( " entrou no update do produto");
+    	
     	List<Produto> produtosLogin = produtoRepository.findByLogin(login);
        
-        System.out.println( " entrou no update do produto");
         if (produtosLogin.size() > 0) {
         	//verifica se já existe outro produto com o mesmo nome
         	System.out.println( " entrou no if de produtos1");
