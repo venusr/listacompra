@@ -77,25 +77,24 @@ public class ProdutoComponent {
         
         if (produtosLogin.size() > 0) {
         	//verifica se já existe outro produto com o mesmo nome
-            for (int i=0; i < produtosLogin.size();i++) {
+        	if (!nomeAntigo.equals(produto.getNome())) {
+                for (int i=0; i < produtosLogin.size();i++) {
          	          	  
-               if (produtosLogin.get(i).getNome().equals(produto.getNome())){
-             	  System.out.println("Produto já existe com esse novo nome");
-                  return null;
-               }
-            }
+                   if (produtosLogin.get(i).getNome().equals(produto.getNome())){
+                 	  System.out.println("Produto já existe com esse novo nome");
+                      return null;
+                   }
+                }
+        	}
             //atualiza produto
             for (int i=0; i < produtosLogin.size();i++) {
                if (produtosLogin.get(i).getNome().equals(nomeAntigo)){
             	  System.out.println("Produtos sao iguais");
                   List<Produto> produtos = produtoRepository.findById(produtosLogin.get(i).getId());
             	  produto.setId(produtosLogin.get(i).getId());
-
             	  return produtoRepository.save(produto);
-
                }
             }
-
   		}
         return null;
     }
