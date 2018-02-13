@@ -88,10 +88,12 @@ public class ProdutoController {
    private Produto altera(@RequestBody Produto produto){
 		System.out.println(" entrou no altera");   	   
 
+		Produto produtoTeste = new Produto();
+		produtoTeste.setNome("entrou altera");
 	   
 	//   Login login = loginComponent.buscarId(id);
 		System.out.println(" entrou no update");   	   
-	  return null;
+	  return produtoTeste;
 		
 	  // return produtoComponent.update(nomeAntigo, produto, login);
    }
