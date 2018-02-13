@@ -84,7 +84,7 @@ public class ProdutoController {
         return produtoComponent.busca(nome, login);
    }
   
-   @PostMapping(value = "/produto/nome/{nomeantigo}/{produto}/{idLogin}")
+   @GetMapping(value = "/produto/nome/{nomeantigo}/{produto}/{idLogin}")
    private Produto altera(@PathVariable(value = "nomeantigo") String nomeAntigo, @PathVariable(value = "produto") Produto produto, @PathVariable(value = "idLogin" ) String id) {
 		System.out.println(" entrou no altera");   	   
 
