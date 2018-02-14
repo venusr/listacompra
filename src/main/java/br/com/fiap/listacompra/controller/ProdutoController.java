@@ -33,7 +33,7 @@ public class ProdutoController {
 
       
    @PostMapping
-   private void save(@RequestBody Produto produto) {
+   private Produto save(@RequestBody Produto produto) {
 
 		//validar se cliente existe ou não
 		Login login = loginComponent.buscarId(produto.getLogin().getId());
@@ -44,8 +44,9 @@ public class ProdutoController {
 		}
 		else {
        	System.out.println("tem classe login");
-        produtoComponent.salvar(produto, login);
+        return produtoComponent.salvar(produto, login);
 		}
+		return null;
    }
    
    @DeleteMapping
