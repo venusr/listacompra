@@ -31,7 +31,7 @@ public class ProdutoComponent {
             	  System.out.println("Produtos sao iguais");
                   List<Produto> produtos = produtoRepository.findById(produtosLogin.get(i).getId());
             	  produto.setId(produtosLogin.get(i).getId());
-
+                  return null;
               }
         	
            }
