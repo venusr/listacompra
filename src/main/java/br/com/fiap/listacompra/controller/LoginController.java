@@ -23,8 +23,8 @@ public class LoginController {
 	   private LoginComponent loginComponent;
 	   
 	   @PostMapping
-	   private void save(@RequestBody Login login) {
-	       loginComponent.salvar(login);
+	   private Login save(@RequestBody Login login) {
+	       return loginComponent.salvar(login);
 	   }
 
 	   @GetMapping
